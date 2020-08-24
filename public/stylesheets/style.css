@@ -1,11 +1,11 @@
-body {
+body{
   font-family: 'Open Sans', sans-serif;
   background-color: #ffffff;
   letter-spacing: 0.5px;
 }
 
 /* styling the login page */
-#outer {
+#outer{
   margin: 0 auto;
   margin-top: 100px;
   width: 60%;
@@ -14,11 +14,12 @@ body {
   justify-content: center;
 }
 
-#center h3 {
+#center h3{
   text-align: center;
 }
 
-#center input[type=text], input[type=password] {
+/* styling the login form */
+#center input[type=text], input[type=password]{
   width: 200px;
   height: 25px;
   padding: 2px 6px;
@@ -27,21 +28,41 @@ body {
   font-size: 14px;
 }
 
-#center input[type=submit] {
+#center input[type=submit]{
   width: 215px;
   height: 30px;
   text-align: center;
-  background-color: #FD9346;
+  background-color: #f9d29d;
+  background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
   border: none;
   border-radius: 18px;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
 }
 
-#center input[type=submit]:hover {
-  background-color: #FD7F2C;
+#center input[type=submit]:hover{
+  background-color: #f6bc6d;
+  background-image: none;
   cursor: pointer;
   font-weight: bold;
+}
+
+/* styling the login page nav */
+nav ul{
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+nav li {
+  float: right;
+  font-size: 14px;
+  padding-right: 25px;
+}
+
+hr.nav_bottom {
+  border-top: 0.5px dotted #2F4353;
 }
 
 a:link {
@@ -52,7 +73,11 @@ a:visited {
   color: #466db2;
   text-decoration: none;
 }
+
 a:hover {
-  color: #2a416a;
-  border-bottom: 1px solid #cccccc;
+  color: #808080;
+}
+
+a:active {
+  color: #FF8C00;
 }
