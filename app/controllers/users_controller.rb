@@ -39,8 +39,18 @@ class UsersController < ApplicationController
 
 # if valid inputs, store the user's credentials, log them in, and redirect to feed
 # if invalid, explain the error, and redirect to the signup view
+
+# also account for new display name input
   post '/signup' do
-    puts params
+    if !params[:name] || !params[:username] || !params[:password]
+      flash[:message] = "missing fields"
+    elsif
+      # don't want special characters in name field
+      "test"
+    else
+      # store credentials, log in, and redirect to '/posts'
+      "test"
+    end
   end
 
 end
