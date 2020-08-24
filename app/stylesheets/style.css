@@ -1,0 +1,25 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+main {
+  max-width: 50%;
+  margin: auto;
+  justify-content: center;
+  align-items: left;
+}
+
+a:link {
+  color: #466db2;
+  text-decoration: none;
+}
+a:visited {
+  color: #466db2;
+  text-decoration: none;
+}
+a:hover {
+  color: #2a416a;
+  border-bottom: 1px solid #cccccc;
+}
