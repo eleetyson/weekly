@@ -24,7 +24,11 @@
           <p><input type="text" name="name" placeholder="Full Name" required></p>
           <p><input type="text" name="username" placeholder="🖐  Username" required></p>
           <p><input type="password" name="password" placeholder="🔑  Password" required></p>
-          <p class="error"><em><%= flash[:message] %></em></p>
+          <% if flash[:message] %>
+            <% flash[:message].each do |message| %>
+              <p class="error"><em><%= message %></em></p>
+            <% end %>
+          <% end %>
           <input type="submit" value="SIGN UP">
         </form>
       </div>

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
 # if valid login credentials, log the user in and redirect to feed
-# if invalid, explain the error, and redirect to the login view
+# if invalid, redirect to login with error explanation
   post '/login' do
     @user = User.find_by(username: params[:username])
 
@@ -38,19 +38,27 @@ class UsersController < ApplicationController
   end
 
 # if valid inputs, store the user's credentials, log them in, and redirect to feed
-# if invalid, explain the error, and redirect to the signup view
-
-# also account for new display name input
+# if invalid, redirect to signup with error explanation
   post '/signup' do
     user = User.new(params)
+
     if user.valid?
       user.save
       session[:user_id] = user.id
       redirect '/posts'
+    elsif params[:name].empty? || params[:username].empty? || params[:username].empty?
+      flash[:message] = "complete all fields"
+      redirect '/signup'
     else
       flash[:message] = user.errors.full_messages
       redirect '/signup'
     end
+  end
+
+# clear the session and redirect to login page upon logout
+  get '/logout' do
+    session.clear
+    redirect '/login'
   end
 
 end
