@@ -1,5 +1,6 @@
 require './config/environment'
 
 use Rack::MethodOverride
-# mount controllers as needed
+use UsersController
+use PostsController
 run ApplicationController
