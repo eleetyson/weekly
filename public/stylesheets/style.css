@@ -14,7 +14,7 @@ body{
   justify-content: center;
 }
 
-#center h3{
+#center h3, p.error{
   text-align: center;
 }
 
@@ -55,29 +55,30 @@ nav ul{
   overflow: hidden;
 }
 
-nav li {
+nav li{
   float: right;
   font-size: 14px;
   padding-right: 25px;
 }
 
-hr.nav_bottom {
+hr.nav_bottom{
   border-top: 0.5px dotted #2F4353;
 }
 
-a:link {
+/* style links */
+a:link{
   color: #466db2;
   text-decoration: none;
 }
-a:visited {
+a:visited{
   color: #466db2;
   text-decoration: none;
 }
 
-a:hover {
+a:hover{
   color: #808080;
 }
 
-a:active {
+a:active{
   color: #FF8C00;
 }

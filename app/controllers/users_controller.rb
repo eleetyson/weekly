@@ -31,9 +31,9 @@ class UsersController < ApplicationController
 # renders the signup view unless user is currently logged in
   get '/signup' do
     if logged_in?
-      # flash[:message] = "You'll need to log out before trying to create another account"
+      redirect '/posts'
     else
-      erb :'users/signup'
+      erb :'/users/signup'
     end
   end
 
@@ -42,14 +42,14 @@ class UsersController < ApplicationController
 
 # also account for new display name input
   post '/signup' do
-    if !params[:name] || !params[:username] || !params[:password]
-      flash[:message] = "missing fields"
-    elsif
-      # don't want special characters in name field
-      "test"
+    user = User.new(params)
+    if user.valid?
+      user.save
+      session[:user_id] = user.id
+      redirect '/posts'
     else
-      # store credentials, log in, and redirect to '/posts'
-      "test"
+      flash[:message] = user.errors.full_messages
+      redirect '/signup'
     end
   end
 

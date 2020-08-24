@@ -23,7 +23,7 @@
         <form action="/login" method="POST" autocomplete="off">
           <p><input type="text" name="username" placeholder="🖐  Username" required></p>
           <p><input type="password" name="password" placeholder="🔑  Password" required></p>
-          <p><em><%= flash[:message] %></em></p>
+          <p class="error"><em><%=flash[:message]%></em></p>
           <input type="submit" value="LOGIN">
         </form>
       </div>
