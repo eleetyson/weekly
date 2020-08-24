@@ -1,0 +1,58 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+/* styling the login page */
+#outer {
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#center h3 {
+  text-align: center;
+}
+
+#center input[type=text], input[type=password] {
+  width: 200px;
+  height: 25px;
+  padding: 2px 6px;
+  margin: 2px 0px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}
+
+#center input[type=submit] {
+  width: 215px;
+  height: 30px;
+  text-align: center;
+  background-color: #FD9346;
+  border: none;
+  border-radius: 18px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+
+#center input[type=submit]:hover {
+  background-color: #FD7F2C;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+a:link {
+  color: #466db2;
+  text-decoration: none;
+}
+a:visited {
+  color: #466db2;
+  text-decoration: none;
+}
+a:hover {
+  color: #2a416a;
+  border-bottom: 1px solid #cccccc;
+}
