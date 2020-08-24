@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     end
   end
 
-# if valid login credentials, log the user in and redirect to home screen with feed
-# if invalid, explain the error, and redirect back to the login view
+# if valid login credentials, log the user in and redirect to feed
+# if invalid, explain the error, and redirect to the login view
   post '/login' do
     @user = User.find_by(username: params[:username])
 
@@ -26,6 +26,21 @@ class UsersController < ApplicationController
       redirect '/login'
     end
 
+  end
+
+# renders the signup view unless user is currently logged in
+  get '/signup' do
+    if logged_in?
+      # flash[:message] = "You'll need to log out before trying to create another account"
+    else
+      erb :'users/signup'
+    end
+  end
+
+# if valid inputs, store the user's credentials, log them in, and redirect to feed
+# if invalid, explain the error, and redirect to the signup view
+  post '/signup' do
+    puts params
   end
 
 end

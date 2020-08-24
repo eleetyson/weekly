@@ -1,22 +1,22 @@
-<!-- login form and link to signup form -->
+<!-- signup form -->
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width", initial-scale=1>
-    <title>Login | Weekly</title>
+    <title>Sign Up | Weekly</title>
     <link rel="stylesheet" href="../stylesheets/style.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <!-- <nav> should have a Sign Up button in top right </nav> -->
+    <!-- <nav> should have a Login button in top right </nav> -->
     <main>
-      <form action="/login" method="POST" autocomplete="off">
+      <form action="/signup" method="POST" autocomplete="off">
         <p><input type="text" name="username" placeholder="Username" required></p>
         <p><input type="password" name="password" placeholder="Password" required></p>
         <p><em><%= flash[:message] %></em></p>
-        <input type="submit" value="Log in">
+        <input type="submit" value="Sign up">
       </form>
     </main>
   </body>
