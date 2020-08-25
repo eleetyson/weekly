@@ -33,6 +33,7 @@
         <% Post.all.order('id DESC').each do |p| %>
         <div class="column">
           <div class="post">
+            <p><%= p.medium %></p>
             <p>
               <strong><%= p.user.name %></strong>
                 <% if p.medium == "Podcast" %>
@@ -44,7 +45,6 @@
                 <% end %>
               <a href="<%= p.link %>" target="_blank"><%= p.title %></a>
             </p>
-            <p><%= p.medium %></p>
           </div>
         </div>
         <% end %>

@@ -1,1 +1,49 @@
-display form for user to create new post
+<!-- form to create new post -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width", initial-scale=1>
+    <title>New | Weekly</title>
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/users/<%= current_user.id %>">Profile</a></li>
+        <li><a href="/posts">Home</a></li>
+      </ul>
+    </nav>
+    <hr class="nav_bottom">
+    <main>
+      <div class="outer">
+        <div class="post_container">
+        <div id="post_form">
+
+          <form action="/posts" method="POST" autocomplete="off">
+            <p>
+              <select name="medium" required>
+                <option value="Article" selected>Article</option>
+                <option value="Blog Post">Blog Post</option>
+                <option value="Book">Book</option>
+                <option value="Podcast">Podcast</option>
+                <option value="Video">Video</option>
+              </select>
+            </p>
+            <p><input type="text" name="title" placeholder="Title*" required></p>
+            <p><input type="text" name="link" placeholder="Link*" required></p>
+            <p class="error"><em><%=flash[:message]%></em></p>
+            <input type="submit" value="POST →">
+          </form>
+
+        </div>
+        </div>
+      </div>
+
+    </main>
+  </body>
+</html>

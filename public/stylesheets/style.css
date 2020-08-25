@@ -8,8 +8,8 @@ body{
   letter-spacing: 0.5px;
 }
 
-/* styling the login page */
-#outer{
+/* styling the outer div to center a page's content */
+.outer{
   margin: 0 auto;
   margin-top: 100px;
   width: 60%;
@@ -49,6 +49,62 @@ body{
   background-image: none;
   cursor: pointer;
   font-weight: bold;
+}
+
+/* styling the new post and edit post forms */
+#post_form input[type=text]{
+  width: 350px;
+  height: 40px;
+  padding: 2px 6px;
+  margin: 2px 0px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  background-color: #ededed;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+#post_form select{
+  width: 100px;
+  padding: 2px 6px;
+  margin: 2px 0px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+#post_form input[type=submit]{
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  background-color: #eec0c6;
+  background-image: linear-gradient(315deg, #eec0c6 0%, #e58c8a 74%);
+  border: none;
+  border-radius: 18px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+#post_form input[type=submit]:hover{
+  background-color: #E58C8A;
+  background-image: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.post_container {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d9e4f5;
+  background-image: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
+  height: 300px;
+  width: 450px;
 }
 
 /* styling the nav bar */
@@ -91,7 +147,7 @@ hr.nav_bottom{
 .column{
   float: left;
   width: 30%;
-  padding: 5px 10px;
+  padding: 10px 15px;
 }
 
 /* creating a 'card' for each post */

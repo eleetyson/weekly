@@ -5,12 +5,23 @@ class PostsController < ApplicationController
     if logged_in?
       erb :'/posts/index'
     else
+      flash[:message] = "please login"
       erb :'/users/login'
     end
   end
 
 # renders a view with a form to create new post
   get '/posts/new' do
+    if logged_in?
+      erb :'/posts/new'
+    else
+      flash[:message] = "please login"
+      erb :'/users/login'
+    end
+  end
+
+# using the params from form on the new.erb view
+  post '/posts' do
 
   end
 
