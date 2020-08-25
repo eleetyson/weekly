@@ -40,19 +40,26 @@ class UsersController < ApplicationController
 # if valid inputs, store the user's credentials, log them in, and redirect to feed
 # if invalid, redirect to signup with error explanation
   post '/signup' do
+    puts params
     user = User.new(params)
 
     if user.valid?
       user.save
       session[:user_id] = user.id
       redirect '/posts'
-    elsif params[:name].empty? || params[:username].empty? || params[:username].empty?
+    elsif params[:name].empty? || params[:username].empty? || params[:password].empty?
       flash[:message] = "complete all fields"
       redirect '/signup'
     else
       flash[:message] = user.errors.full_messages
       redirect '/signup'
     end
+  end
+
+# if valid inputs, render the user's profile with all of their posts
+# if invalid, redirect to home screen or login page with error explanation
+  get 'users/:id' do
+    
   end
 
 # clear the session and redirect to login page upon logout

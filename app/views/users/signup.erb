@@ -23,8 +23,8 @@
         <h3>Create Account</h3>
         <form action="/signup" method="POST" autocomplete="off">
           <p><input type="text" name="name" placeholder="Full Name" required></p>
-          <p><input type="text" name="username" placeholder="🖐  Username" required></p>
-          <p><input type="password" name="password" placeholder="🔑  Password" required></p>
+          <p><input type="text" name="username" placeholder="Username" required></p>
+          <p><input type="password" name="password" placeholder="Password" required></p>
           <% if flash[:message] %>
             <% flash[:message].each do |message| %>
               <p class="error"><em><%= message %></em></p>

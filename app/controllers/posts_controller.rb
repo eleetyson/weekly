@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
 
-# renders a view displaying the 5 most recent posts, assuming the user is logged in
-  get 'posts' do
+# renders a view displaying the x most recent posts, assuming the user is logged in
+  get '/posts' do
     if logged_in?
-      erb :'posts/index'
+      erb :'/posts/index'
     else
       erb :'/users/login'
     end

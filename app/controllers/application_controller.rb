@@ -9,7 +9,7 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "pw_security"
   end
 
-  # using the Sinatra Flash gem to display custom error messages
+# using the Sinatra Flash gem to display custom error messages
   register Sinatra::Flash
 
 # route for root redirects to login route
