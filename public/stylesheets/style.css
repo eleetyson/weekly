@@ -74,6 +74,10 @@ hr.nav_bottom{
 .row{
   padding-top: 30px;
   margin: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 /* clear floats after each column so posts appear side-by-side */
