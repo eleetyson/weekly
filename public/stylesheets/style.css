@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body{
   font-family: 'Open Sans', sans-serif;
   background-color: #ffffff;
@@ -47,7 +51,7 @@ body{
   font-weight: bold;
 }
 
-/* styling the login page nav */
+/* styling the nav bar */
 nav ul{
   list-style-type: none;
   margin: 0px;
@@ -66,20 +70,68 @@ hr.nav_bottom{
   border-top: 0.5px dotted #2F4353;
 }
 
-/* style links */
-a:link{
+/* styling the main layout of the feed and each profile */
+.row{
+  margin: 0px;
+}
+
+/* clear floats after each column so posts appear side-by-side */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* creating a 3 column layout */
+.column{
+  float: left;
+  width: 30%;
+  padding: 5px 10px;
+}
+
+/* creating a 'card' for each post */
+.post{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: left;
+  background-color: #f1f1f1;
+}
+
+.post p{
+  font-size: 12px;
+}
+
+/* styling navbar links */
+nav ul li a:link{
   color: #466db2;
   text-decoration: none;
 }
-a:visited{
+nav ul li a:visited{
   color: #466db2;
   text-decoration: none;
 }
 
-a:hover{
+nav ul li a:hover{
   color: #000000;
 }
 
-a:active{
+nav ul li a:active{
   color: #FF8C00;
+}
+
+/* styling other links */
+a:link{
+
+}
+
+a:visited{
+
+}
+
+a:hover{
+
+}
+
+a:active{
+
 }

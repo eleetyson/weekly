@@ -20,7 +20,28 @@
     </nav>
     <hr class="nav_bottom">
     <main>
+      <div class="row">
 
+        <% Post.all.each do |p| %>
+        <div class="column">
+          <div class="post">
+            <p>
+              <strong><%= p.user.name %></strong>
+                <% if p.medium == "Podcast" %>
+                  <%= "listened to" %>
+                <% elsif p.medium == "Video" %>
+                  <%= "watched" %>
+                <% else %>
+                  <%= "read" %>
+                <% end %>
+              <em><%= p.title %></em>
+            </p>
+            <p><%= p.medium %></p>
+          </div>
+        </div>
+        <% end %>
+
+      </div>
     </main>
   </body>
 </html>
