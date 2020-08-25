@@ -34,12 +34,18 @@
                 <% else %>
                   <%= "read" %>
                 <% end %>
-              <em><%= p.title %></em>
+              <a href="<%= p.link %>" target="_blank"><%= p.title %></a>
             </p>
             <p><%= p.medium %></p>
           </div>
         </div>
         <% end %>
+
+        <div class="column">
+          <div class="post">
+            <p></p>
+          </div>
+        </div>
 
       </div>
     </main>

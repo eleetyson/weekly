@@ -124,18 +124,21 @@ nav ul li a:active{
 }
 
 /* styling other links */
-a:link{
-
+.post p a:link{
+  color: #466db2;
+  text-decoration: none;
 }
 
-a:visited{
-
+.post p a:visited{
+  color: #466db2;
+  text-decoration: none;
 }
 
-a:hover{
-
+.post p a:hover{
+  font-weight: bolder;
+  border-bottom: 1px solid #cccccc;
 }
 
-a:active{
-
+.post p a:active{
+  color: #000000;
 }
