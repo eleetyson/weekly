@@ -72,6 +72,7 @@ hr.nav_bottom{
 
 /* styling the main layout of the feed and each profile */
 .row{
+  padding-top: 30px;
   margin: 0px;
 }
 
@@ -94,7 +95,10 @@ hr.nav_bottom{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
   text-align: left;
-  background-color: #f1f1f1;
+  background-color: #f9d29d;
+  background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
+  height: 115px;
+  width: 350px;
 }
 
 .post p{
