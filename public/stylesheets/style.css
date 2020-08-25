@@ -99,10 +99,20 @@ hr.nav_bottom{
   background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
   height: 115px;
   width: 350px;
+  font-size: 12px;
 }
 
-.post p{
-  font-size: 12px;
+/* styling the empty card */
+.post_new{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #f9d29d;
+  background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
+  height: 115px;
+  width: 350px;
+  font-size: 22px;
 }
 
 /* styling navbar links */
@@ -124,12 +134,12 @@ nav ul li a:active{
 }
 
 /* styling other links */
-.post p a:link{
+.post p a:link, .post_new p a:link{
   color: #466db2;
   text-decoration: none;
 }
 
-.post p a:visited{
+.post p a:visited, .post_new p a:visited{
   color: #466db2;
   text-decoration: none;
 }
@@ -139,6 +149,10 @@ nav ul li a:active{
   border-bottom: 1px solid #cccccc;
 }
 
-.post p a:active{
+.post_new p a:hover{
+  font-weight: bolder;
+}
+
+.post p a:active, .post_new p a:active{
   color: #000000;
 }

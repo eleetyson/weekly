@@ -22,7 +22,15 @@
     <main>
       <div class="row">
 
-        <% Post.all.each do |p| %>
+        <div class="column">
+          <div class="post_new">
+            <p>
+              <a href="/posts/new">📝</a>
+            </p>
+          </div>
+        </div>
+
+        <% Post.all.order('id DESC').each do |p| %>
         <div class="column">
           <div class="post">
             <p>
@@ -40,12 +48,6 @@
           </div>
         </div>
         <% end %>
-
-        <div class="column">
-          <div class="post">
-            <p></p>
-          </div>
-        </div>
 
       </div>
     </main>
