@@ -56,10 +56,17 @@ class UsersController < ApplicationController
     end
   end
 
-# if valid inputs, render the user's profile with all of their posts
-# if invalid, redirect to home screen or login page with error explanation
-  get 'users/:id' do
-    
+# render a view with all posts by the given user
+  # *view will handle logic for whether user has edit access*
+# otherwise, redirect to home screen or login page with error explanation
+  get '/users/:username' do
+    puts params
+    if !logged_in?
+      flash[:message] = "please login"
+    else
+      @user_of_profile = User.find_by(username: params[:username])
+      erb :'/posts/show'
+    end
   end
 
 # clear the session and redirect to login page upon logout

@@ -19,31 +19,30 @@
       </ul>
     </nav>
     <hr class="nav_bottom">
+
     <main>
       <div class="outer">
         <div class="post_container">
-        <div id="post_form">
-
-          <form action="/posts" method="POST" autocomplete="off">
-            <p>
-              <select name="medium" required>
-                <option value="Article" selected>Article</option>
-                <option value="Blog Post">Blog Post</option>
-                <option value="Book">Book</option>
-                <option value="Podcast">Podcast</option>
-                <option value="Video">Video</option>
-              </select>
-            </p>
-            <p><input type="text" name="title" placeholder="Title*" required></p>
-            <p><input type="text" name="link" placeholder="Link*" required></p>
-            <p class="error"><em><%=flash[:message]%></em></p>
-            <input type="submit" value="POST →">
-          </form>
-
-        </div>
+          <div id="post_form">
+            <form action="/posts" method="POST" autocomplete="off">
+              <p>
+                <select name="medium" required>
+                  <option value="Article" selected>Article</option>
+                  <option value="Blog Post">Blog Post</option>
+                  <option value="Book">Book</option>
+                  <option value="Podcast">Podcast</option>
+                  <option value="Video">Video</option>
+                </select>
+              </p>
+              <p><input type="text" name="title" placeholder="Title*" required></p>
+              <p><input type="text" name="link" placeholder="Link*" required></p>
+              <p class="error"><em><%=flash[:message]%></em></p>
+              <input type="submit" value="POST →">
+            </form>
+          </div>
         </div>
       </div>
-
     </main>
+
   </body>
 </html>

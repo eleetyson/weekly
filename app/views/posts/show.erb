@@ -1,1 +1,64 @@
-display all of a user's posts
+<!-- display the user's posts, and edit access if it's their own profile -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width", initial-scale=1>
+    <title>New | Weekly</title>
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/logout">Logout</a></li>
+        <% if @user_of_profile.id == current_user.id %>
+          <li>Profile</li>
+        <% else %>
+          <li><a href="/users/<%= current_user.username %>">Profile</a></li>
+        <% end %>
+        <li><a href="/posts">Home</a></li>
+      </ul>
+    </nav>
+    <hr class="nav_bottom">
+
+    <main>
+      <div class="row">
+      <% if @user_of_profile.id == current_user.id %>
+        <div class="column">
+          <div class="post_new">
+            <p>
+              <a href="/posts/new">📝</a>
+            </p>
+          </div>
+        </div>
+      <% end %>
+
+        <% if !@user_of_profile.posts.empty? %>
+        <% @user_of_profile.posts.order('id DESC').each do |p| %>
+        <div class="column">
+          <div class="post">
+            <p><%= p.medium %></p>
+            <p>
+              <strong><%= p.user.name %></strong>
+                <% if p.medium == "Podcast" %>
+                  <%= "listened to" %>
+                <% elsif p.medium == "Video" %>
+                  <%= "watched" %>
+                <% else %>
+                  <%= "read" %>
+                <% end %>
+              <a href="<%= p.link %>" target="_blank"><%= p.title %></a>
+            </p>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+    </main>
+
+  </body>
+</html>

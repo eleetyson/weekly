@@ -14,14 +14,14 @@
     <nav>
       <ul>
         <li><a href="/logout">Logout</a></li>
-        <li><a href="/users/<%= current_user.id %>">Profile</a></li>
+        <li><a href="/users/<%= current_user.username %>">Profile</a></li>
         <li>Home</li>
       </ul>
     </nav>
     <hr class="nav_bottom">
+
     <main>
       <div class="row">
-
         <div class="column">
           <div class="post_new">
             <p>
@@ -48,8 +48,8 @@
           </div>
         </div>
         <% end %>
-
       </div>
     </main>
+
   </body>
 </html>
