@@ -22,6 +22,7 @@
 
     <main>
       <div class="row">
+        <p class="error"><em><%=flash[:message]%></em></p>
         <div class="column">
           <div class="post_new">
             <p>
@@ -35,7 +36,11 @@
           <div class="post">
             <p><%= p.medium %></p>
             <p>
-              <strong><%= p.user.name %></strong>
+              <% if p.user.id == current_user.id %>
+                <strong><%= "You" %></strong>
+              <% else %>
+                <strong><%= p.user.name %></strong>
+              <% end %>
                 <% if p.medium == "Podcast" %>
                   <%= "listened to" %>
                 <% elsif p.medium == "Video" %>
@@ -45,6 +50,9 @@
                 <% end %>
               <a href="<%= p.link %>" target="_blank"><%= p.title %></a>
             </p>
+            <% if p.user.id == current_user.id %>
+              <a href="/posts/<%= p.id %>">🚧</a>
+            <% end %>
           </div>
         </div>
         <% end %>

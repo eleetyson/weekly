@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width", initial-scale=1>
-    <title>New | Weekly</title>
+    <title><%= @user_of_profile.name %> | Weekly</title>
     <link rel="icon" href="/favicon.png" type="image/png">
     <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -26,6 +26,7 @@
 
     <main>
       <div class="row">
+      <p class="error"><em><%=flash[:message]%></em></p>
       <% if @user_of_profile.id == current_user.id %>
         <div class="column">
           <div class="post_new">
@@ -42,7 +43,11 @@
           <div class="post">
             <p><%= p.medium %></p>
             <p>
-              <strong><%= p.user.name %></strong>
+              <% if @user_of_profile.id == current_user.id %>
+                <strong><%= "You" %></strong>
+              <% else %>
+                <strong><%= p.user.name %></strong>
+              <% end %>
                 <% if p.medium == "Podcast" %>
                   <%= "listened to" %>
                 <% elsif p.medium == "Video" %>
@@ -52,6 +57,9 @@
                 <% end %>
               <a href="<%= p.link %>" target="_blank"><%= p.title %></a>
             </p>
+            <% if @user_of_profile.id == current_user.id %>
+              <a href="/posts/<%= p.id %>">🚧</a>
+            <% end %>
           </div>
         </div>
         <% end %>

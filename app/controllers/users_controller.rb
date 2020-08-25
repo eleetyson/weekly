@@ -60,7 +60,6 @@ class UsersController < ApplicationController
   # *view will handle logic for whether user has edit access*
 # otherwise, redirect to home screen or login page with error explanation
   get '/users/:username' do
-    puts params
     if !logged_in?
       flash[:message] = "please login"
     else
