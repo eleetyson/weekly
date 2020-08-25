@@ -34,6 +34,9 @@
         <% Post.all.order('id DESC').each do |p| %>
         <div class="column">
           <div class="post">
+            <% if p.user.id == current_user.id %>
+              <a href="/posts/<%= p.id %>">✎</a>
+            <% end %>
             <p><%= p.medium %></p>
             <p>
               <% if p.user.id == current_user.id %>
@@ -50,9 +53,6 @@
                 <% end %>
               <a href="<%= p.link %>" target="_blank"><%= p.title %></a>
             </p>
-            <% if p.user.id == current_user.id %>
-              <a href="/posts/<%= p.id %>">🚧</a>
-            <% end %>
           </div>
         </div>
         <% end %>

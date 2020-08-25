@@ -46,9 +46,10 @@ class PostsController < ApplicationController
   end
 
 # if user created the post, renders a view with a form to edit
-# if not,
+# if not, simply displays the individual post (with username + user's name?)
   get '/posts/:id' do
     # erb :'posts/show'
+    # should pre-populate form with current info AND option to delete (1 PATCH and 1 DELETE route) 
   end
 
 end
