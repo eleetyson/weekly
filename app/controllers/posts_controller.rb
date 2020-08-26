@@ -77,7 +77,7 @@ class PostsController < ApplicationController
       if @post && @post.user == current_user
         erb :'/posts/edit'
       elsif @post
-        flash[:message] = "no access"
+        flash[:message] = "no edit access"
         redirect "/posts/#{params[:id]}"
       else
         flash[:message] = "post doesn't exist"
@@ -93,7 +93,6 @@ class PostsController < ApplicationController
 # updates post if post exists, user is authorized, and user provided valid inputs
 # if not, provides error message and redirects accordingly
   patch '/posts/:id' do
-    puts params
     if logged_in?
       @post = Post.find_by_id(params[:id])
 
@@ -103,7 +102,7 @@ class PostsController < ApplicationController
           flash[:message] = "complete all fields"
           redirect "/posts/#{params[:id]}/edit"
         else # only update post if given valid inputs
-          # @post.update(params)
+          @post.update(title: params[:title], medium: params[:medium], link: params[:link])
           redirect '/posts'
         end
 
@@ -121,15 +120,50 @@ class PostsController < ApplicationController
     end
   end
 
-
-# to write
+# if user created the post, renders a view with a form to delete
+# if post belongs to another user, provides error message and redirects to different route
+# if post doesn't exist, provides error message and redirects to main feed
   get '/posts/:id/delete' do
+    if logged_in?
+      @post = Post.find_by_id(params[:id])
 
+      if @post && @post.user == current_user
+        erb :'/posts/delete'
+      elsif @post
+        flash[:message] = "no edit access"
+        redirect "/posts/#{params[:id]}"
+      else
+        flash[:message] = "post doesn't exist"
+        redirect '/posts'
+      end
+
+    else # if not logged in
+      flash[:message] = "please login"
+      erb :'/users/login'
+    end
   end
 
-# only want to actually delete the post under certain conditions
+# deletes post if post exists and user is authorized
+# if not, provides error message and redirects accordingly
   delete '/posts/:id' do
+    puts params
+    if logged_in?
+      post = Post.find_by_id(params[:id])
 
+      if post && post.user == current_user # if post exists and belongs to current user
+        post.delete
+      elsif post # redirect if post doesn't belong to current user
+        flash[:message] = "no edit access"
+        redirect "/posts/#{params[:id]}"
+      else
+        flash[:message] = "post doesn't exist"
+        redirect '/posts'
+      end
+
+    else # if not logged in
+      flash[:message] = "please login"
+      erb :'/users/login'
+    end
   end
 
 end
