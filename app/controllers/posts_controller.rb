@@ -45,35 +45,90 @@ class PostsController < ApplicationController
     end
   end
 
-# if user created the post, renders a view with a form to edit
-# if not, simply displays the individual post (with username + user's name?)
-  get '/posts/:id/edit' do
-    # if logged_in?
-      # if Post.find_by_id(params[:id]).user == current_user
-        # render the edit view
-      # else
-        # flash[:message] = "no access"
-        # redirect '/posts'
-      # end
-    # else
-      # flash[:message] = "please login"
-      # erb :'/users/login'
-    # end
+# renders a view with a form to view post
+# redirects to edit route if post belongs to user
+# redirects to main feed if post doesn't exist
+  get '/posts/:id' do
+    if logged_in?
+      @post = Post.find_by_id(params[:id])
 
+      if @post && @post.user == current_user
+        redirect "/posts/#{params[:id]}/edit"
+      elsif @post
+        erb :'/posts/show'
+      else
+        flash[:message] = "post doesn't exist"
+        redirect '/posts'
+      end
 
-    # add more logic than just this
-    @post = Post.find_by_id(params[:id])
-    erb :'/posts/edit'
-    # should pre-populate form with current info AND option to delete (1 PATCH and 1 DELETE route)
+    else # if not logged in
+      flash[:message] = "please login"
+      erb :'/users/login'
+    end
   end
 
-# only want to actually edit the post under certain conditions
-  patch '/posts' do
+# if user created the post, renders a view with a form to edit
+# if post belongs to another user, provides error message and redirects to different route
+# if post doesn't exist, provides error message and redirects to main feed
+  get '/posts/:id/edit' do
+    if logged_in?
+      @post = Post.find_by_id(params[:id])
+
+      if @post && @post.user == current_user
+        erb :'/posts/edit'
+      elsif @post
+        flash[:message] = "no access"
+        redirect "/posts/#{params[:id]}"
+      else
+        flash[:message] = "post doesn't exist"
+        redirect '/posts'
+      end
+
+    else # if not logged in
+      flash[:message] = "please login"
+      erb :'/users/login'
+    end
+  end
+
+# updates post if post exists, user is authorized, and user provided valid inputs
+# if not, provides error message and redirects accordingly
+  patch '/posts/:id' do
+    puts params
+    if logged_in?
+      @post = Post.find_by_id(params[:id])
+
+      if @post && @post.user == current_user # if post exists and belongs to current user
+
+        if params[:medium].empty? || params[:title].empty? || params[:link].empty?
+          flash[:message] = "complete all fields"
+          redirect "/posts/#{params[:id]}/edit"
+        else # only update post if given valid inputs
+          # @post.update(params)
+          redirect '/posts'
+        end
+
+      elsif @post # redirect if post doesn't belong to current user
+        flash[:message] = "no access"
+        redirect "/posts/#{params[:id]}"
+      else
+        flash[:message] = "post doesn't exist"
+        redirect '/posts'
+      end
+
+    else # if not logged in
+      flash[:message] = "please login"
+      erb :'/users/login'
+    end
+  end
+
+
+# to write
+  get '/posts/:id/delete' do
 
   end
 
 # only want to actually delete the post under certain conditions
-  delete '/posts' do
+  delete '/posts/:id' do
 
   end
 

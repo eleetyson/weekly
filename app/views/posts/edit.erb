@@ -24,11 +24,11 @@
       <div class="outer">
         <div class="post_container">
           <div class="post_form">
-            <form action="/posts" method="POST" autocomplete="off">
+            <form action="/posts/<%= @post.id %>" method="POST" autocomplete="off">
               <input type="hidden" name="_method" value="PATCH">
-              <p><%= @post.user.username %></p>
+              <p><%= @post.user.name%></p>
               <p>
-                <select name="medium" required <%= 'disabled' if @post.user != current_user  %> >
+                <select name="medium" required>
                   <option value="Article" <%= 'selected' if @post.medium == 'Article' %> >Article</option>
                   <option value="Blog Post" <%= 'selected' if @post.medium == 'Blog Post' %> >Blog Post</option>
                   <option value="Book" <%= 'selected' if @post.medium == 'Book' %> >Book</option>
@@ -36,10 +36,10 @@
                   <option value="Video" <%= 'selected' if @post.medium == 'Video' %> >Video</option>
                 </select>
               </p>
-              <p><input type="text" name="title" value="<%= @post.title %>" required <%= 'disabled' if @post.user != current_user  %> ></p>
-              <p><input type="text" name="link" value="<%= @post.link %>" required <%= 'disabled' if @post.user != current_user  %> ></p>
+              <p><input type="text" name="title" value="<%= @post.title %>" required></p>
+              <p><input type="text" name="link" value="<%= @post.link %>" required></p>
               <p class="error"><em><%=flash[:message]%></em></p>
-              <input type="submit" value="EDIT" <%= 'disabled' if @post.user != current_user  %> >
+              <input type="submit" value="UPDATE">
             </form>
           </div>
         </div>

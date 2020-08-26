@@ -8,7 +8,7 @@ body{
   letter-spacing: 0.5px;
 }
 
-/* styling the outer div to center a page's content */
+/* styling the outer div to center login and signup pages' content */
 .outer{
   margin: 0 auto;
   margin-top: 100px;
@@ -18,11 +18,12 @@ body{
   justify-content: center;
 }
 
+/* center login page heading, signup page heading, and error messages */
 .center h3, p.error{
   text-align: center;
 }
 
-/* styling the login form */
+/* styling the login and signup form fields */
 .center input[type=text], input[type=password]{
   width: 200px;
   height: 25px;
@@ -51,7 +52,20 @@ body{
   font-weight: bold;
 }
 
-/* styling the new post and edit post forms */
+/* styling the container to display individual posts */
+.post_container {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d9e4f5;
+  background-image: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
+  height: 300px;
+  width: 450px;
+}
+
+/* styling the forms to view and edit individual posts */
 .post_form input[type=text]{
   width: 350px;
   height: 40px;
@@ -89,22 +103,10 @@ body{
 }
 
 .post_form input[type=submit]:hover{
-  background-color: #E58C8A;
+  background-color: #e58c8a;
   background-image: none;
   cursor: pointer;
   font-weight: bold;
-}
-
-.post_container {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #d9e4f5;
-  background-image: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
-  height: 300px;
-  width: 450px;
 }
 
 /* styling the nav bar */
@@ -122,6 +124,7 @@ nav li{
   padding-right: 30px;
 }
 
+/* styling the border under the nav bar */
 hr.nav_bottom{
   border-top: 0.5px dotted #2F4353;
 }
@@ -157,7 +160,7 @@ hr.nav_bottom{
   text-align: left;
   background-color: #f9d29d;
   background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
-  height: 135px;
+  height: 145px;
   width: 350px;
   font-size: 12px;
 }
@@ -170,7 +173,7 @@ hr.nav_bottom{
   vertical-align: middle;
   background-color: #f9d29d;
   background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
-  height: 135px;
+  height: 145px;
   width: 350px;
   font-size: 22px;
 }
@@ -213,6 +216,6 @@ nav a:active{
   border-bottom: 1px solid #cccccc;
 }
 
-.post p a:active, .post_new p a:active{
+.post p a:active, .post_new a:active{
   color: #000000;
 }

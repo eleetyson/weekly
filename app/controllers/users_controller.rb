@@ -62,9 +62,10 @@ class UsersController < ApplicationController
   get '/users/:username' do
     if !logged_in?
       flash[:message] = "please login"
+      redirect '/login'
     else
       @user_of_profile = User.find_by(username: params[:username])
-      erb :'/posts/show'
+      erb :'/users/show'
     end
   end
 

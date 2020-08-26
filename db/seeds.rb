@@ -1,5 +1,5 @@
-User.destroy_all
-Post.destroy_all
+# User.destroy_all
+# Post.destroy_all
 
 # create an account and post for Michelle
 michelle = User.create(name: "Michelle Obama", username: "mobama", password: "firstlady")

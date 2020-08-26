@@ -1,10 +1,10 @@
-<!-- home screen displaying all posts -->
+<!-- display the user's posts, and edit access if it's their own profile -->
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width", initial-scale=1>
-    <title>Home | Weekly</title>
+    <title><%= @user_of_profile.name %> | Weekly</title>
     <link rel="icon" href="/favicon.png" type="image/png">
     <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -14,15 +14,20 @@
     <nav>
       <ul>
         <li><a href="/logout">Logout</a></li>
-        <li><a href="/users/<%= current_user.username %>">Profile</a></li>
-        <li>Home</li>
+        <% if @user_of_profile.id == current_user.id %>
+          <li>Profile</li>
+        <% else %>
+          <li><a href="/users/<%= current_user.username %>">Profile</a></li>
+        <% end %>
+        <li><a href="/posts">Home</a></li>
       </ul>
     </nav>
     <hr class="nav_bottom">
 
     <main>
       <div class="row">
-        <p class="error"><em><%=flash[:message]%></em></p>
+      <p class="error"><em><%=flash[:message]%></em></p>
+      <% if @user_of_profile.id == current_user.id %>
         <div class="column">
           <div class="post_new">
             <p>
@@ -30,17 +35,18 @@
             </p>
           </div>
         </div>
+      <% end %>
 
-        <% Post.all.order('id DESC').each do |p| %>
+        <% if !@user_of_profile.posts.empty? %>
+        <% @user_of_profile.posts.order('id DESC').each do |p| %>
         <div class="column">
-          <a href="/posts/<%= p.link %>"></a>
           <div class="post">
             <% if p.user.id == current_user.id %>
               <a href="/posts/<%= p.id %>/edit">✎</a>
             <% end %>
             <p><%= p.medium %></p>
             <p>
-              <% if p.user.id == current_user.id %>
+              <% if @user_of_profile.id == current_user.id %>
                 <strong><%= "You" %></strong>
               <% else %>
                 <strong><%= p.user.name %></strong>
@@ -60,6 +66,8 @@
           </div>
         </div>
         <% end %>
+        <% end %>
+
       </div>
     </main>
 

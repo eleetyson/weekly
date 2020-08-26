@@ -1,10 +1,10 @@
-<!-- display the user's posts, and edit access if it's their own profile -->
+<!-- view of given post -->
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width", initial-scale=1>
-    <title><%= @user_of_profile.name %> | Weekly</title>
+    <title>View | Weekly</title>
     <link rel="icon" href="/favicon.png" type="image/png">
     <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -14,57 +14,34 @@
     <nav>
       <ul>
         <li><a href="/logout">Logout</a></li>
-        <% if @user_of_profile.id == current_user.id %>
-          <li>Profile</li>
-        <% else %>
-          <li><a href="/users/<%= current_user.username %>">Profile</a></li>
-        <% end %>
+        <li><a href="/users/<%= current_user.username %>">Profile</a></li>
         <li><a href="/posts">Home</a></li>
       </ul>
     </nav>
     <hr class="nav_bottom">
 
     <main>
-      <div class="row">
-      <p class="error"><em><%=flash[:message]%></em></p>
-      <% if @user_of_profile.id == current_user.id %>
-        <div class="column">
-          <div class="post_new">
-            <p>
-              <a href="/posts/new">📝</a>
-            </p>
+      <div class="outer">
+        <div class="post_container">
+          <div class="post_form">
+            <form action="/posts" method="POST" autocomplete="off">
+              <input type="hidden" name="_method" value="PATCH">
+              <p><%= @post.user.name%></p>
+              <p>
+                <select name="medium" required <%= 'disabled' if @post.user != current_user  %> >
+                  <option value="Article" <%= 'selected' if @post.medium == 'Article' %> >Article</option>
+                  <option value="Blog Post" <%= 'selected' if @post.medium == 'Blog Post' %> >Blog Post</option>
+                  <option value="Book" <%= 'selected' if @post.medium == 'Book' %> >Book</option>
+                  <option value="Podcast" <%= 'selected' if @post.medium == 'Podcast' %> >Podcast</option>
+                  <option value="Video" <%= 'selected' if @post.medium == 'Video' %> >Video</option>
+                </select>
+              </p>
+              <p><input type="text" name="title" value="<%= @post.title %>" required <%= 'disabled' if @post.user != current_user  %> ></p>
+              <p><input type="text" name="link" value="<%= @post.link %>" required <%= 'disabled' if @post.user != current_user  %> ></p>
+              <p class="error"><em><%=flash[:message]%></em></p>
+            </form>
           </div>
         </div>
-      <% end %>
-
-        <% if !@user_of_profile.posts.empty? %>
-        <% @user_of_profile.posts.order('id DESC').each do |p| %>
-        <div class="column">
-          <div class="post">
-            <% if p.user.id == current_user.id %>
-              <a href="/posts/<%= p.id %>/edit">✎</a>
-            <% end %>
-            <p><%= p.medium %></p>
-            <p>
-              <% if @user_of_profile.id == current_user.id %>
-                <strong><%= "You" %></strong>
-              <% else %>
-                <strong><%= p.user.name %></strong>
-              <% end %>
-                <% if p.medium == "Podcast" %>
-                  <%= "listened to" %>
-                <% elsif p.medium == "Video" %>
-                  <%= "watched" %>
-                <% else %>
-                  <%= "read" %>
-                <% end %>
-              <a href="<%= p.link %>" target="_blank"><%= p.title %></a>
-            </p>
-          </div>
-        </div>
-        <% end %>
-        <% end %>
-
       </div>
     </main>
 
