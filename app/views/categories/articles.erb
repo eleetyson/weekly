@@ -1,0 +1,69 @@
+<!-- display all articles -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width", initial-scale=1>
+    <title>Articles | Weekly</title>
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/users/<%= current_user.username %>">Profile</a></li>
+        <li><a href="/explore">Explore</a></li>
+        <li><a href="/posts">Home</a></li>
+      </ul>
+    </nav>
+    <hr class="nav_bottom">
+
+    <main>
+      <div class="row">
+        <div class="column">
+          <div class="post_new">
+            <p>
+              <a href="/posts/new">📝</a>
+            </p>
+          </div>
+        </div>
+
+        <% if Post.where(medium: "Article").count > 0 %>
+          <% Post.where(medium: "Article").each do |p| %>
+            <div class="column">
+              <div class="post">
+                <% if p.user.id == current_user.id %>
+                  <a href="/posts/<%= p.id %>/edit">✎</a>
+                <% end %>
+                <p><%= p.medium %></p>
+                <p>
+                  <% if p.user.id == current_user.id %>
+                    <strong><%= "You" %></strong>
+                  <% else %>
+                    <strong><%= p.user.name %></strong>
+                  <% end %>
+                    <% if p.medium == "Podcast" %>
+                      <%= "listened to" %>
+                    <% elsif p.medium == "Video" %>
+                      <%= "watched" %>
+                    <% else %>
+                      <%= "read" %>
+                    <% end %>
+                  <a href="<%= p.link %>" target="_blank"><%= p.title %></a>
+                </p>
+                <% if p.user.id == current_user.id %>
+                  <a href="/posts/<%= p.id %>/delete">🗑️</a>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
+      </div>
+    </main>
+
+  </body>
+</html>

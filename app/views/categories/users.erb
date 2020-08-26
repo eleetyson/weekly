@@ -23,12 +23,14 @@
 
     <main>
       <div class="row">
-        <% User.all.where.not(username: "#{current_user.username}").each do |u| %>
-          <div class="column">
-            <div class="post_new">
-              <p><a href="/users/<%= u.username %>"><%= u.name %></a></p>
+        <% User.where.not(username: "#{current_user.username}").each do |u| %>
+          <% if u.posts.count > 0 %>
+            <div class="column">
+              <div class="post_new">
+                <p><a href="/users/<%= u.username %>"><%= u.name %></a></p>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </main>
