@@ -18,12 +18,12 @@ body{
   justify-content: center;
 }
 
-#center h3, p.error{
+.center h3, p.error{
   text-align: center;
 }
 
 /* styling the login form */
-#center input[type=text], input[type=password]{
+.center input[type=text], input[type=password]{
   width: 200px;
   height: 25px;
   padding: 2px 6px;
@@ -32,7 +32,7 @@ body{
   font-size: 14px;
 }
 
-#center input[type=submit]{
+.center input[type=submit]{
   width: 215px;
   height: 30px;
   text-align: center;
@@ -44,7 +44,7 @@ body{
   font-size: 12px;
 }
 
-#center input[type=submit]:hover{
+.center input[type=submit]:hover{
   background-color: #f6bc6d;
   background-image: none;
   cursor: pointer;
@@ -52,7 +52,7 @@ body{
 }
 
 /* styling the new post and edit post forms */
-#post_form input[type=text]{
+.post_form input[type=text]{
   width: 350px;
   height: 40px;
   padding: 2px 6px;
@@ -64,7 +64,7 @@ body{
   border: none;
 }
 
-#post_form select{
+.post_form select{
   width: 100px;
   padding: 2px 6px;
   margin: 2px 0px;
@@ -74,7 +74,7 @@ body{
   border: none;
 }
 
-#post_form input[type=submit]{
+.post_form input[type=submit]{
   width: 100px;
   height: 30px;
   text-align: center;
@@ -88,7 +88,7 @@ body{
   border: none;
 }
 
-#post_form input[type=submit]:hover{
+.post_form input[type=submit]:hover{
   background-color: #E58C8A;
   background-image: none;
   cursor: pointer;

@@ -1,5 +1,5 @@
 class API
-  
+
   # returns true if a link is valid (not dead), false if not
   # using URL Expander API from rapidapi.com
   def valid_link?(link)

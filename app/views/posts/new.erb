@@ -14,7 +14,7 @@
     <nav>
       <ul>
         <li><a href="/logout">Logout</a></li>
-        <li><a href="/users/<%= current_user.id %>">Profile</a></li>
+        <li><a href="/users/<%= current_user.username %>">Profile</a></li>
         <li><a href="/posts">Home</a></li>
       </ul>
     </nav>
@@ -23,7 +23,7 @@
     <main>
       <div class="outer">
         <div class="post_container">
-          <div id="post_form">
+          <div class="post_form">
             <form action="/posts" method="POST" autocomplete="off">
               <p>
                 <select name="medium" required>
@@ -34,8 +34,8 @@
                   <option value="Video">Video</option>
                 </select>
               </p>
-              <p><input type="text" name="title" placeholder="Title*" required></p>
-              <p><input type="text" name="link" placeholder="Link*" required></p>
+              <p><input type="text" name="title" placeholder="Title" required></p>
+              <p><input type="text" name="link" placeholder="Link" required></p>
               <p class="error"><em><%=flash[:message]%></em></p>
               <input type="submit" value="POST →">
             </form>

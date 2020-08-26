@@ -1,5 +1,4 @@
-edit individual posts, copy form from new.erb
-<!-- withs form to edit or delete post -->
+<!-- view with form to edit or delete post -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,3 +9,41 @@ edit individual posts, copy form from new.erb
     <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/users/<%= current_user.username %>">Profile</a></li>
+        <li><a href="/posts">Home</a></li>
+      </ul>
+    </nav>
+    <hr class="nav_bottom">
+
+    <main>
+      <div class="outer">
+        <div class="post_container">
+          <div class="post_form">
+            <form action="/posts" method="POST" autocomplete="off">
+              <input type="hidden" name="_method" value="PATCH">
+              <p>
+                <select name="medium" required>
+                  <option value="Article" <%= 'selected' if @post.medium == 'Article' %> >Article</option>
+                  <option value="Blog Post" <%= 'selected' if @post.medium == 'Blog Post' %> >Blog Post</option>
+                  <option value="Book" <%= 'selected' if @post.medium == 'Book' %> >Book</option>
+                  <option value="Podcast" <%= 'selected' if @post.medium == 'Podcast' %> >Podcast</option>
+                  <option value="Video" <%= 'selected' if @post.medium == 'Video' %> >Video</option>
+                </select>
+              </p>
+              <p><input type="text" name="title" value="<%= @post.title %>" required></p>
+              <p><input type="text" name="link" value="<%= @post.link %>" required></p>
+              <p class="error"><em><%=flash[:message]%></em></p>
+              <input type="submit" value="EDIT">
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </body>
+</html>
