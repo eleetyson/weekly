@@ -14,5 +14,8 @@ To run it, just follow the steps below:
 2. CD into your newly cloned directory.
 3. Run `bundle install` to install all necessary gems and their appropriate versions.
 4. Run `shotgun` to start up a local server, using the [Shotgun gem](https://rubygems.org/gems/shotgun).
-5. Visit `http://localhost:9393/` in your browser.
-6. Either create an account or use the test credentials below. Enjoy :)
+5. Visit `localhost:9393` in your browser.
+6. Either create an account or use the test credentials below, and you're in :)
+
+Username: `eleetyson`
+Password: `pw`
