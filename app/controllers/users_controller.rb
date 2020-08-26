@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       redirect '/posts'
     else
       if !@user
-        flash[:message] = "username does not exist"
+        flash[:message] = "username doesn't exist"
       else
         flash[:message] = "incorrect password"
       end
@@ -43,7 +43,10 @@ class UsersController < ApplicationController
     puts params
     user = User.new(params)
 
-    if user.valid?
+    if user.name.length > 20 # for display purposes, limit length of user display name
+      flash[:message] = "username too long"
+      redirect '/signup'
+    elsif user.valid? # validating presence and uniqueness of inputs
       user.save
       session[:user_id] = user.id
       redirect '/posts'
@@ -57,7 +60,6 @@ class UsersController < ApplicationController
   end
 
 # render a view with all posts by the given user
-  # *view will handle logic for whether user has edit access*
 # otherwise, redirect to home screen or login page with error explanation
   get '/users/:username' do
     if !logged_in?

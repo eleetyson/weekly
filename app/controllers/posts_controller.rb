@@ -25,12 +25,15 @@ class PostsController < ApplicationController
   post '/posts' do
     if logged_in?
 
-      if !API.new.valid_link?(params[:link])
+      if !API.new.valid_link?(params[:link]) # ensure given link actually works
         flash[:message] = "invalid link"
       end
 
       post = Post.new(params)
-      if post.valid?
+      if post.title.length > 65 # for display purposes, limit length of post's title
+        flash[:message] = "title too long"
+        redirect '/posts/new'
+      elsif post.valid? # validates presence of required inputs
         post.user = current_user
         post.save
         redirect '/posts'
@@ -152,6 +155,7 @@ class PostsController < ApplicationController
 
       if post && post.user == current_user # if post exists and belongs to current user
         post.delete
+        redirect '/posts'
       elsif post # redirect if post doesn't belong to current user
         flash[:message] = "no edit access"
         redirect "/posts/#{params[:id]}"
