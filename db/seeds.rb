@@ -1,3 +1,6 @@
+User.destroy_all
+Post.destroy_all
+
 # create an account and post for Michelle
 michelle = User.create(name: "Michelle Obama", username: "mobama", password: "firstlady")
 Post.create(title: "The Michelle Obama Podcast - Episode 1: President Barack Obama", medium: "Podcast", link: "https://open.spotify.com/show/71mvGXupfKcmO6jlmOJQTP?", user: michelle)
