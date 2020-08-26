@@ -22,9 +22,24 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-# route renders view to segment by user or content category
+# route renders view to segment by user or content category if user is logged in
+# redirects to login if not
   get '/explore' do
-    if logged
+    if logged_in?
+      erb :'/categories/explore'
+    else
+      redirect '/login'
+    end
+  end
+
+  # route renders view to segment by user if user is logged in
+  # redirects to login if not
+  get '/explore/users' do
+    if logged_in?
+      erb :'/categories/users'
+    else
+      redirect '/login'
+    end
   end
 
   helpers do

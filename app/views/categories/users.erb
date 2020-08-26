@@ -1,0 +1,37 @@
+<!-- displays cards with links to all user profiles (except for current user) -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width", initial-scale=1>
+    <title>Users | Weekly</title>
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/users/<%= current_user.username %>">Profile</a></li>
+        <li><a href="/explore">Explore</a></li>
+        <li><a href="/posts">Home</a></li>
+      </ul>
+    </nav>
+    <hr class="nav_bottom">
+
+    <main>
+      <div class="row">
+        <% User.all.where.not(username: "#{current_user.username}").each do |u| %>
+          <div class="column">
+            <div class="post_new">
+              <p><a href="/users/<%= u.username %>"><%= u.name %></a></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </main>
+
+  </body>
+</html>
