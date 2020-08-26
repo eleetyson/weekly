@@ -12,9 +12,19 @@ class ApplicationController < Sinatra::Base
 # using the Sinatra Flash gem to display custom error messages
   register Sinatra::Flash
 
-# route for root redirects to login route
+# route for root redirects home page if user is logged in
+# redirects to signup if not
   get '/' do
-    redirect '/login'
+    if logged_in?
+      redirect '/posts'
+    else
+      redirect '/signup'
+    end
+  end
+
+# route renders view to segment by user or content category
+  get '/explore' do
+    if logged
   end
 
   helpers do
