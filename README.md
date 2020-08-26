@@ -17,5 +17,5 @@ To run it, just follow the steps below:
 5. Visit `localhost:9393` in your browser.
 6. Either create an account or use the test credentials below, and you're in :)
 
-Username: `eleetyson`
+Username: `eleetyson`  
 Password: `pw`
