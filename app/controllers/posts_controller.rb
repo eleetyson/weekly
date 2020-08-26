@@ -47,7 +47,19 @@ class PostsController < ApplicationController
 
 # if user created the post, renders a view with a form to edit
 # if not, simply displays the individual post (with username + user's name?)
-  get '/posts/:id' do
+  get '/posts/:id/edit' do
+    # if logged_in?
+      # if Post.find_by_id(params[:id]).user == current_user
+        # render the edit view
+      # else
+        # flash[:message] = "no access"
+        # redirect '/posts'
+      # end
+    # else
+      # flash[:message] = "please login"
+      # erb :'/users/login'
+    # end
+
 
     # add more logic than just this
     @post = Post.find_by_id(params[:id])
