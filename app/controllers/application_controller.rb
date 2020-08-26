@@ -22,8 +22,19 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+# helper methods
+  helpers do
+    def current_user # helper method that returns the current user instance
+      User.find_by_id(session[:user_id])
+    end
+
+    def logged_in? # helper method that returns whether the current user is logged in
+      !!session[:user_id]
+    end
+  end
+
+# ROUTES BELOW ARE NOT CRUCIAL TO CORE APPLICATION
 # route renders view to segment by user or content category if user is logged in
-# redirects to login if not
   get '/explore' do
     if logged_in?
       erb :'/categories/explore'
@@ -33,7 +44,6 @@ class ApplicationController < Sinatra::Base
   end
 
 # route renders view to segment by user if user is logged in
-# redirects to login if not
   get '/explore/users' do
     if logged_in?
       erb :'/categories/users'
@@ -43,7 +53,6 @@ class ApplicationController < Sinatra::Base
   end
 
 # route renders view to segment by content category if user is logged in
-# redirects to login if not
   get '/explore/posts' do
     if logged_in?
       erb :'/categories/posts'
@@ -52,21 +61,12 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+# route renders view with all posts for a given content category is user is logged in
   get '/explore/posts/:category' do
     if logged_in?
       erb :"/categories/#{params[:category]}"
     else
       redirect '/login'
-    end
-  end
-
-  helpers do
-    def current_user # helper method that returns the current user instance
-      User.find_by_id(session[:user_id])
-    end
-
-    def logged_in? # helper method that returns whether the current user is logged in
-      !!session[:user_id]
     end
   end
 

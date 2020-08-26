@@ -32,7 +32,7 @@
         </div>
 
         <% if Post.where(medium: "Article").count > 0 %>
-          <% Post.where(medium: "Article").each do |p| %>
+          <% Post.where(medium: "Article").order('id DESC').each do |p| %>
             <div class="column">
               <div class="post">
                 <% if p.user.id == current_user.id %>
