@@ -27,19 +27,20 @@ class PostsController < ApplicationController
 
       if !API.new.valid_link?(params[:link]) # ensure given link actually works
         flash[:message] = "invalid link"
-      end
-
-      post = Post.new(params)
-      if post.title.length > 65 # for display purposes, limit length of post's title
-        flash[:message] = "title too long"
         redirect '/posts/new'
-      elsif post.valid? # validates presence of required inputs
-        post.user = current_user
-        post.save
-        redirect '/posts'
-      elsif params[:medium].empty? || params[:title].empty? || params[:link].empty?
-        flash[:message] = "complete all fields"
-        redirect '/posts/new'
+      else
+        post = Post.new(params)
+        if post.title.length > 65 # for display purposes, limit length of post's title
+          flash[:message] = "title too long"
+          redirect '/posts/new'
+        elsif post.valid? # validates presence of required inputs
+          post.user = current_user
+          post.save
+          redirect '/posts'
+        elsif params[:medium].empty? || params[:title].empty? || params[:link].empty?
+          flash[:message] = "complete all fields"
+          redirect '/posts/new'
+        end
       end
 
     else
@@ -60,7 +61,6 @@ class PostsController < ApplicationController
       elsif @post
         erb :'/posts/show'
       else
-        flash[:message] = "post doesn't exist"
         redirect '/posts'
       end
 
@@ -72,7 +72,7 @@ class PostsController < ApplicationController
 
 # if user created the post, renders a view with a form to edit
 # if post belongs to another user, provides error message and redirects to different route
-# if post doesn't exist, provides error message and redirects to main feed
+# if post doesn't exist, redirects to main feed
   get '/posts/:id/edit' do
     if logged_in?
       @post = Post.find_by_id(params[:id])
@@ -83,7 +83,6 @@ class PostsController < ApplicationController
         flash[:message] = "no edit access"
         redirect "/posts/#{params[:id]}"
       else
-        flash[:message] = "post doesn't exist"
         redirect '/posts'
       end
 
@@ -104,6 +103,9 @@ class PostsController < ApplicationController
         if params[:medium].empty? || params[:title].empty? || params[:link].empty?
           flash[:message] = "complete all fields"
           redirect "/posts/#{params[:id]}/edit"
+        elsif params[:title].length > 65 # for display purposes, limit length of post's title
+          flash[:message] = "title too long"
+          redirect "/posts/#{@post.id}/edit"
         else # only update post if given valid inputs
           @post.update(title: params[:title], medium: params[:medium], link: params[:link])
           redirect '/posts'
@@ -112,8 +114,7 @@ class PostsController < ApplicationController
       elsif @post # redirect if post doesn't belong to current user
         flash[:message] = "no access"
         redirect "/posts/#{params[:id]}"
-      else
-        flash[:message] = "post doesn't exist"
+      else # redirect to main feed if post doesn't exist
         redirect '/posts'
       end
 
@@ -125,7 +126,7 @@ class PostsController < ApplicationController
 
 # if user created the post, renders a view with a form to delete
 # if post belongs to another user, provides error message and redirects to different route
-# if post doesn't exist, provides error message and redirects to main feed
+# if post doesn't exist, redirects to main feed
   get '/posts/:id/delete' do
     if logged_in?
       @post = Post.find_by_id(params[:id])
@@ -136,7 +137,6 @@ class PostsController < ApplicationController
         flash[:message] = "no edit access"
         redirect "/posts/#{params[:id]}"
       else
-        flash[:message] = "post doesn't exist"
         redirect '/posts'
       end
 
@@ -159,8 +159,7 @@ class PostsController < ApplicationController
       elsif post # redirect if post doesn't belong to current user
         flash[:message] = "no edit access"
         redirect "/posts/#{params[:id]}"
-      else
-        flash[:message] = "post doesn't exist"
+      else # redirect to main feed if post doesn't exist
         redirect '/posts'
       end
 

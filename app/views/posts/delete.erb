@@ -26,7 +26,6 @@
           <div class="post_form">
             <form action="/posts/<%= @post.id %>" method="POST" autocomplete="off">
               <input type="hidden" name="_method" value="DELETE">
-              <p><%= @post.user.name%></p>
               <p>
                 <select name="medium" required>
                   <option value="Article" <%= 'selected' if @post.medium == 'Article' %> >Article</option>

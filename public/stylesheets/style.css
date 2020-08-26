@@ -23,6 +23,18 @@ body{
   text-align: center;
 }
 
+.error_main {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.error_main:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 /* styling the login and signup form fields */
 .center input[type=text], input[type=password]{
   width: 200px;
@@ -134,8 +146,6 @@ hr.nav_bottom{
   padding-top: 30px;
   margin: 0px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
 }
 
