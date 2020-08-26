@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     user = User.new(params)
 
     if user.name.length > 20 # for display purposes, limit length of user display name
-      flash[:message] = "username too long"
+      flash[:message] = "display name too long"
       redirect '/signup'
     elsif user.valid? # validating presence and uniqueness of inputs
       user.save
