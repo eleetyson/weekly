@@ -40,7 +40,6 @@ class UsersController < ApplicationController
 # if valid inputs, store the user's credentials, log them in, and redirect to feed
 # if invalid, redirect to signup with error explanation
   post '/signup' do
-    puts params
     user = User.new(params)
 
     if user.name.length > 20 # for display purposes, limit length of user display name

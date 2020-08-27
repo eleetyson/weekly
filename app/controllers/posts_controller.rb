@@ -149,7 +149,6 @@ class PostsController < ApplicationController
 # deletes post if post exists and user is authorized
 # if not, provides error message and redirects accordingly
   delete '/posts/:id' do
-    puts params
     if logged_in?
       post = Post.find_by_id(params[:id])
 
