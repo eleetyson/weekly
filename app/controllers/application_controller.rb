@@ -1,6 +1,6 @@
 class ApplicationController < Sinatra::Base
 
-# set where the controllers should look for views
+# set where the controllers should look for views and views should look for the stylesheet
 # enable sessions
   configure do
     set :views, 'app/views'
@@ -33,7 +33,7 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-# ROUTES BELOW ARE NOT CRUCIAL TO CORE APPLICATION
+# ROUTES BELOW AREN'T CRITICAL TO CORE APPLICATION
 # route renders view to segment by user or content category if user is logged in
   get '/explore' do
     if logged_in?
