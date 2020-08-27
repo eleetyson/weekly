@@ -43,7 +43,7 @@
               <% if p.user.id == current_user.id %>
                 <strong><%= "You" %></strong>
               <% else %>
-                <strong><%= p.user.name %></strong>
+                <a href="/users/<%= p.user.username %>"><strong><%= p.user.name %></strong></a>
               <% end %>
                 <% if p.medium == "Podcast" %>
                   <%= "listened to" %>
