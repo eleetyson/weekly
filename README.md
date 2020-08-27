@@ -1,4 +1,6 @@
 ### Weekly
+![Demo](./demo.png)
+
 Weekly is an app for sharing and discovering content recommendations.
 
 It's built with Sinatra -- a lightweight alternative to other Ruby frameworks, like Rails -- as well as simple HTML and CSS.
@@ -19,5 +21,3 @@ To run it, just follow the steps below:
 
 Username: `eleetyson`  
 Password: `pw`
-
-![Demo](./demo.png)
