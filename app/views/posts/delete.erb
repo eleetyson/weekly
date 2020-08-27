@@ -28,7 +28,7 @@
             <form action="/posts/<%= @post.id %>" method="POST" autocomplete="off">
               <input type="hidden" name="_method" value="DELETE">
               <p>
-                <select name="medium" required>
+                <select name="medium">
                   <option value="Article" <%= 'selected' if @post.medium == 'Article' %> >Article</option>
                   <option value="Blog Post" <%= 'selected' if @post.medium == 'Blog Post' %> >Blog Post</option>
                   <option value="Book" <%= 'selected' if @post.medium == 'Book' %> >Book</option>
@@ -36,8 +36,8 @@
                   <option value="Video" <%= 'selected' if @post.medium == 'Video' %> >Video</option>
                 </select>
               </p>
-              <p><input type="text" name="title" value="<%= @post.title %>" required></p>
-              <p><input type="text" name="link" value="<%= @post.link %>" required></p>
+              <p><input type="text" name="title" value="<%= @post.title %>"></p>
+              <p><input type="text" name="link" value="<%= @post.link %>"></p>
               <p class="error"><em><%=flash[:message]%></em></p>
               <input type="submit" value="DELETE">
             </form>
