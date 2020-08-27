@@ -12,9 +12,11 @@ class API
   end
 
   # RESPONSE.BODY EXAMPLE
-  # "input_url":"https://amzn.to/2S4UzSx"
-  # "response_time":669
-  # "target_url":"https://www.amazon.com/gift-cards/b?ie=UTF8&node=2238192011"
-  # "target_url_alive":true
+  # {
+  #   "input_url":"https://amzn.to/2S4UzSx"
+  #   "response_time":669
+  #   "target_url":"https://www.amazon.com/gift-cards/b?ie=UTF8&node=2238192011"
+  #   "target_url_alive":true
+  # }
 
 end

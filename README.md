@@ -19,3 +19,5 @@ To run it, just follow the steps below:
 
 Username: `eleetyson`  
 Password: `pw`
+
+![Demo](./demo.png)
