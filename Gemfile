@@ -16,4 +16,4 @@ gem 'sqlite3'
 gem 'bcrypt'
 gem 'sinatra-flash'
 gem 'unirest'
-gem 'dotenv-rails'
+gem 'dotenv-rails', groups: [:development, :test]
