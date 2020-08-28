@@ -219,3 +219,28 @@ nav a:active{
 .post p a:active, .post_new a:active{
   color: #000000;
 }
+
+/* add breakpoint to display as single column on mobile */
+@media screen and (max-width: 400px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  nav ul{
+    list-style-type: none;
+    float: right;
+  }
+
+  nav li{
+    font-size: 14px;
+    font-weight: bold;
+    display: inline;
+    padding: 10px;
+  }
+
+  hr.nav_bottom{
+    display: none;
+  }
+}
