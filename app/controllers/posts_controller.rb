@@ -20,6 +20,12 @@ class PostsController < ApplicationController
     end
   end
 
+# renders a view with the most recently created post
+    get '/posts/newest' do
+      @post = Post.order('id DESC').limit(1)[0]
+      redirect "/posts/#{@post.id}"
+    end
+
 # if valid inputs, create the post and redirect to feed
 # if given dead link or otherwise invalid inputs, redirect to post creation form with error message
   post '/posts' do
