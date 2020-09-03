@@ -20,9 +20,15 @@ class PostsController < ApplicationController
     end
   end
 
-# renders a view with the most recently created post
+# renders a view with the newest post
+  get '/posts/newest' do
+    @post = Post.order('id DESC').limit(1)[0]
+    redirect "/posts/#{@post.id}"
+  end
+
+# renders a view with the oldest post
     get '/posts/newest' do
-      @post = Post.order('id DESC').limit(1)[0]
+      @post = Post.order('id ASC').limit(1)[0]
       redirect "/posts/#{@post.id}"
     end
 
